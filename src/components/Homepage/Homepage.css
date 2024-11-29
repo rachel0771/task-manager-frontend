@@ -1,0 +1,211 @@
+/* General Styling */
+.homepage {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: 'Quicksand', Arial, sans-serif;
+    background-color: #fef6e4; /* Soft cream */
+    padding: 20px;
+}
+
+/* Header Styling */
+.homepage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #fae8e0; /* Light pink */
+    border-bottom: 1px solid #ecd9d1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.homepage-header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #6d597a; /* Deep purple */
+    margin: 0;
+}
+
+.homepage-header button {
+    padding: 8px 16px;
+    background: #f4a7a1; /* Soft coral */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.homepage-header button:hover {
+    background: #ec8d88; /* Darker coral */
+}
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex: 1;
+    padding-top: 20px;
+}
+
+/* Column Styling */
+.column {
+    background: #ffffff; /* White background */
+    border: 1px solid #ecd9d1; /* Soft border */
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    flex: 1;
+    max-width: calc(25% - 20px); /* Responsive column widths */
+}
+
+/* Column Title Styling */
+.column-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fae8e0; /* Soft pink */
+    border: 1px solid #ecd9d1;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    color: #6d597a;
+}
+
+.column-title span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+/* Status Circle Colors */
+.status-circle.todo {
+    background-color: #d7bbf5; /* Light Purple */
+}
+
+.status-circle.inprogress {
+    background-color: #ffdfa0; /* Light Yellow */
+}
+
+.status-circle.done {
+    background-color: #a0d995; /* Soft Green */
+}
+
+/* Task Card Styling */
+.task-card {
+    background: #fff8f0; /* Very light cream */
+    border: 1px solid #ecd9d1;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.task-card h4 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #6d597a;
+}
+
+.task-card p {
+    font-size: 14px;
+    margin: 0;
+    color: #a9a9a9;
+}
+
+/* Priority Tag Styling */
+.priority-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Priority Colors */
+.priority-high {
+    background-color: #e63946; /* Deep pink */
+}
+
+.priority-medium {
+    background-color: #f4a7a1; /* Soft coral */
+}
+
+.priority-low {
+    background-color: #bde4f4; /* Soft blue */
+}
+
+/* Add Item and Invite Button Styling */
+.add-item, .invite-button {
+    margin-top: auto;
+    background-color: #bde4f4; /* Light blue */
+    color: #ffffff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+.add-item:hover, .invite-button:hover {
+    background-color: #91ccea; /* Slightly darker blue */
+}
+
+/* Team Sidebar Styling */
+.sidebar {
+    background: #ffffff;
+    border: 1px solid #ecd9d1;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.sidebar h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #6d597a; /* Deep purple */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #a9a9a9;
+}
+
+.sidebar .invite-button {
+    display: block;
+    margin-top: auto;
+    background-color: #bde4f4; /* Light blue */
+    color: #ffffff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+.sidebar .invite-button:hover {
+    background-color: #91ccea; /* Slightly darker blue */
+}

@@ -1,0 +1,55 @@
+/* Flex utilities */
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Spacing utilities */
+.mt-small {
+    margin-top: var(--spacing-small);
+}
+
+.mt-medium {
+    margin-top: var(--spacing-medium);
+}
+
+.mb-medium {
+    margin-bottom: var(--spacing-medium);
+}
+
+.pt-medium {
+    padding-top: var(--spacing-medium);
+}
+
+.pb-medium {
+    padding-bottom: var(--spacing-medium);
+}
+
+/* Text utilities */
+.text-center {
+    text-align: center;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+/* Border utilities */
+.rounded {
+    border-radius: var(--border-radius);
+}
