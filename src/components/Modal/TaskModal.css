@@ -1,32 +1,162 @@
+/* Modal Overlay */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 
+/* Modal Content */
 .modal-content {
-    background: white;
+    background: #ffffff; /* White background */
+    border-radius: 12px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    width: 300px;
+    width: 400px; /* Fixed width */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
-.modal-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+/* Modal Header */
+.modal-content h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #6d597a; /* Deep purple */
+    text-align: center;
+}
+
+/* Form Styling */
+.modal-content label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #6d597a; /* Deep purple */
 }
 
 .modal-content input,
 .modal-content select {
     width: 100%;
-    margin-bottom: 10px;
-    padding: 8px;
+    padding: 10px;
+    border: 1px solid #ecd9d1; /* Soft border */
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    background: #faf3eb; /* Light cream background */
+    color: #6d597a; /* Deep purple text */
+}
+
+.modal-content input:focus,
+.modal-content select:focus {
+    border-color: #91ccea; /* Light blue border on focus */
+    outline: none;
+    box-shadow: 0 0 4px rgba(145, 204, 234, 0.6); /* Light blue glow */
+}
+
+/* Dropdown Styling */
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown-header {
+    padding: 10px;
+    border: 1px solid #ecd9d1;
+    border-radius: 8px;
+    background: #faf3eb;
+    color: #6d597a;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-arrow {
+    font-size: 12px;
+    color: #6d597a;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #ecd9d1;
+    border-radius: 8px;
+    max-height: 150px;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.dropdown-item {
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-item:hover {
+    background: #faf3eb;
+}
+
+.dropdown-item input[type='checkbox'] {
+    margin-right: 10px;
+}
+
+/* Modal Buttons */
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.create-button {
+    padding: 10px 16px;
+    background-color: #a0d995; /* Green */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+}
+
+.create-button:hover {
+    background-color: #7cb77c; /* Darker Green */
+}
+
+.cancel-button {
+    padding: 10px 16px;
+    background-color: #f4a7a1; /* Coral */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+}
+
+.cancel-button:hover {
+    background-color: #ec8d88; /* Darker Coral */
+}
+
+/* Animation for Modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }

@@ -164,48 +164,57 @@
     background-color: #91ccea; /* Slightly darker blue */
 }
 
-/* Team Sidebar Styling */
-.sidebar {
-    background: #ffffff;
-    border: 1px solid #ecd9d1;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    flex: 1;
+/* Task Actions (Edit and Delete Buttons) */
+.task-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 10px;
 }
 
-.sidebar h3 {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: #6d597a; /* Deep purple */
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar ul li {
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: #a9a9a9;
-}
-
-.sidebar .invite-button {
-    display: block;
-    margin-top: auto;
-    background-color: #bde4f4; /* Light blue */
-    color: #ffffff;
-    padding: 8px 16px;
+.edit-task, .delete-task {
+    padding: 5px 10px;
     border: none;
-    border-radius: 12px;
-    font-size: 14px;
+    border-radius: 8px;
+    font-size: 12px;
     font-weight: bold;
     cursor: pointer;
-    text-align: center;
 }
 
-.sidebar .invite-button:hover {
-    background-color: #91ccea; /* Slightly darker blue */
+/* Edit Button */
+.edit-task {
+    background-color: #91ccea; /* Light Blue */
+    color: white;
+}
+
+.edit-task:hover {
+    background-color: #6bb3d9; /* Darker Blue */
+}
+
+/* Delete Button */
+.delete-task {
+    background-color: #d3d3d3; /* Light Gray */
+    color: #4f4f4f; /* Darker Gray */
+}
+
+.delete-task:hover {
+    background-color: #b5b5b5; /* Slightly Darker Gray */
+}
+
+/* Dropdown (Assignee Selection) */
+.modal-content select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ecd9d1;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    background: #faf3eb; /* Light cream background */
+    color: #6d597a; /* Deep purple text */
+}
+
+.modal-content select:focus {
+    border-color: #91ccea; /* Light blue border on focus */
+    outline: none;
+    box-shadow: 0 0 4px rgba(145, 204, 234, 0.6); /* Light blue glow */
 }

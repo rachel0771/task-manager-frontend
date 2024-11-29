@@ -18,18 +18,21 @@ const Homepage = () => {
     const [tasks, setTasks] = useState(initialTasks);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentColumn, setCurrentColumn] = useState('');
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // Manage login state
+    const [taskToEdit, setTaskToEdit] = useState(null); // Task to be edited
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
 
+    // Toggle login/logout
     const toggleLogin = () => {
         if (isLoggedIn) {
-            setIsLoggedIn(false); // Log out
+            setIsLoggedIn(false);
             alert('You have logged out!');
         } else {
-            navigate('/login'); // Redirect to login
+            navigate('/login');
         }
     };
 
+    // Handle drag and drop
     const onDragEnd = (result) => {
         if (!result.destination) return;
 
@@ -48,23 +51,51 @@ const Homepage = () => {
         });
     };
 
-    const handleAddTask = (newTask) => {
+    // Add or update task
+    const handleAddOrUpdateTask = (updatedTask) => {
+        if (taskToEdit) {
+            // Update existing task
+            const updatedColumn = tasks[currentColumn].map((task) =>
+                task.id === updatedTask.id ? updatedTask : task
+            );
+            setTasks({ ...tasks, [currentColumn]: updatedColumn });
+        } else {
+            // Add new task
+            setTasks({
+                ...tasks,
+                [currentColumn]: [...tasks[currentColumn], updatedTask],
+            });
+        }
+        setIsModalOpen(false);
+        setTaskToEdit(null); // Reset taskToEdit
+    };
+
+    // Delete a task
+    const handleDeleteTask = (columnId, taskId) => {
+        const updatedColumn = tasks[columnId].filter((task) => task.id !== taskId);
         setTasks({
             ...tasks,
-            [currentColumn]: [...tasks[currentColumn], newTask],
+            [columnId]: updatedColumn,
         });
-        setIsModalOpen(false);
+    };
+
+    // Edit a task
+    const handleEditTask = (columnId, task) => {
+        setCurrentColumn(columnId);
+        setTaskToEdit(task); // Set the task to be edited
+        setIsModalOpen(true);
     };
 
     return (
         <div className="homepage">
-            {/* Top Navigation */}
+            {/* Header */}
             <header className="homepage-header">
                 <h1>Project Name</h1>
                 <button onClick={toggleLogin}>
                     {isLoggedIn ? 'Log Out' : 'Log In'}
                 </button>
             </header>
+
             {/* Main Content */}
             <div className="main-content">
                 <DragDropContext onDragEnd={onDragEnd}>
@@ -89,6 +120,7 @@ const Homepage = () => {
                                         ></span>
                                         <h2>{columnId.toUpperCase()}</h2>
                                     </div>
+
                                     {/* Task Cards */}
                                     {tasks[columnId].map((task, index) => (
                                         <Draggable key={task.id} draggableId={task.id} index={index}>
@@ -112,6 +144,21 @@ const Homepage = () => {
                                                     >
                                                         {task.priority}
                                                     </span>
+                                                    {/* Edit and Delete Buttons */}
+                                                    <div className="task-actions">
+                                                        <button
+                                                            className="edit-task"
+                                                            onClick={() => handleEditTask(columnId, task)}
+                                                        >
+                                                            Edit
+                                                        </button>
+                                                        <button
+                                                            className="delete-task"
+                                                            onClick={() => handleDeleteTask(columnId, task.id)}
+                                                        >
+                                                            Delete
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             )}
                                         </Draggable>
@@ -123,6 +170,7 @@ const Homepage = () => {
                                         onClick={() => {
                                             setCurrentColumn(columnId);
                                             setIsModalOpen(true);
+                                            setTaskToEdit(null); // Reset taskToEdit
                                         }}
                                     >
                                         + Add Item
@@ -132,15 +180,20 @@ const Homepage = () => {
                         </Droppable>
                     ))}
                 </DragDropContext>
-                {/* Team Sidebar */}
+                {/* Task Modal */}
+                <TaskModal
+                    isOpen={isModalOpen}
+                    onClose={() => {
+                        setIsModalOpen(false);
+                        setTaskToEdit(null); // Reset taskToEdit on close
+                    }}
+                    onSubmit={handleAddOrUpdateTask}
+                    taskToEdit={taskToEdit} // Pass the task to edit, if any
+                    teamMembers={['Jiena Wu', 'Ruimeng Zhang', 'Alex Johnson']} // Team members dropdown options
+                />
+                {/* Sidebar */}
                 <TeamSidebar />
             </div>
-            {/* Task Modal */}
-            <TaskModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                onSubmit={handleAddTask}
-            />
         </div>
     );
 };
